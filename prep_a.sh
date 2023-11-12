@@ -27,7 +27,9 @@ picom --no-fading-openclose --backend glx &
 setxkbmap -option "grp:alt_space_toggle" -layout "us,sk" &
 dunst &
 nm-applet &
+blueman-applet &
 pkill clipmenud
 clipmenud &
+thunderbird &
 discord --start-minimized &
 exec awesome

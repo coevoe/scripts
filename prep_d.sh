@@ -24,7 +24,9 @@ setxkbmap -option "grp:alt_space_toggle" -layout "us,sk" &
 dunst &
 slbar &
 nm-applet &
+blueman-applet &
 pkill clipmenud
 clipmenud &
 discord --start-minimized &
+thunderbird &
 exec dwm
