@@ -1,5 +1,5 @@
 CC		= gcc
-CFLAGS 	= -Wall -g
+CFLAGS 	= -Wall -g `pkg-config --cflags --libs libnotify`
 
 default: all
 
