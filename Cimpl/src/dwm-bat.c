@@ -33,11 +33,14 @@ int batt_cap(FILE *batt_cap) {
 }
 int main() {
     FILE *fp1, *fp2;
-    NotifyNotification *battacpi;
+    NotifyNotification *critbattacpi, *fullbattacpi;
 
     char summary[20];
     char body[70];
-    char *appname= "Battery alerter";
+    char *summary2 = "Notebook je nabitý";
+    char *body2 = "Vypoj nabíjačku z počítača!";
+    char *appname = "Critical Battery alerter";
+    char *appname2 = "Full Battery alerter";
 
     fp1 = fopen("/sys/class/power_supply/BAT0/capacity", "r");
     fp2 = fopen("/sys/class/power_supply/BAT0/status", "r");
@@ -56,9 +59,14 @@ int main() {
     }
 
     notify_init(appname);
-    battacpi = notify_notification_new(summary, body, NULL);
-    notify_notification_set_urgency(battacpi, NOTIFY_URGENCY_CRITICAL);
-    notify_notification_set_timeout(battacpi, 7500);
+    critbattacpi = notify_notification_new(summary, body, NULL);
+    notify_notification_set_urgency(critbattacpi, NOTIFY_URGENCY_CRITICAL);
+    notify_notification_set_timeout(critbattacpi, 7500);
+
+    notify_init(appname2);
+    fullbattacpi = notify_notification_new(summary2, body2, NULL);
+    notify_notification_set_urgency(fullbattacpi, NOTIFY_URGENCY_NORMAL);
+    notify_notification_set_timeout(fullbattacpi, 7500);
 
     switch (status) {
         case 0:
@@ -66,7 +74,7 @@ int main() {
         break;
         case 1:
             if (cap <= 15) {
-                notify_notification_show(battacpi, NULL);
+                notify_notification_show(critbattacpi, NULL);
                 printf("BAT -%d%%\n", cap);
             }
             printf("BAT -%d%%\n", cap);
@@ -75,6 +83,7 @@ int main() {
             printf("BAT =%d%%\n", cap);
         break;
         case 3:
+			notify_notification_show(fullbattacpi, NULL);
             printf("BAT *%d%%\n", cap);
         break;
         case -1:
