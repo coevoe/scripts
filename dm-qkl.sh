@@ -11,10 +11,10 @@
 # Start of Code
 case "$(printf "Kataster\\nMHD\\nC Exercises\\n3Dviewer\\nProtonDB\\nSuckless\\nScpwiki\\nSOŠEdupage\\nZSEdupage\\nBezkriedy\\nAur\\nHeureka\\nAlza\\nAndreaShop\\nTinkercad\\nArchlinux\\nYoutube\\nCommons Wikipedia\\nReddit\\nGmail\\nItsfoss\\nTheverge\\nGithub\\nWikipedia\\nNationstates issues\\nNationstates\\nArchWiki\\nVox\\nOurWorldinData\\n" | sort | $dmdpy "Open in "${BROWSER}":")" in
 "Suckless")
-    $BROWSER http://suckless.org/
+    $BROWSER https://suckless.org/
     ;;
 "Nationstates issues")
-    $BROWSER http://www.mwq.dds.nl/ns/results/
+    $BROWSER https://www.mwq.dds.nl/ns/results/
     ;;
 "ProtonDB")
     $BROWSER https://protondb.com/
@@ -95,8 +95,8 @@ case "$(printf "Kataster\\nMHD\\nC Exercises\\n3Dviewer\\nProtonDB\\nSuckless\\n
    $BROWSER https://zbgis.skgeodesy.sk/mkzbgis/sk/kataster
    ;;
 "OurWorldinData")
-    $BROWSER https://ourworldindata.com/
-    ;;
+   $BROWSER https://ourworldindata.com/
+   ;;
 *)
     echo default
     ;;
